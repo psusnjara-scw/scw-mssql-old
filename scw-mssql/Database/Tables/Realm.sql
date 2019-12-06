@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[Realm]
+(
+    [RealmID]				INTEGER IDENTITY(1,1)	NOT NULL,
+	[RealmDesc]				NVARCHAR(40)			NOT NULL,
+
+	CONSTRAINT PK_Realm PRIMARY KEY CLUSTERED ([RealmID])
+	
+)

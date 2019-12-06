@@ -1,0 +1,27 @@
+﻿CREATE TABLE [dbo].[Tournament] (
+    [TournamentID]			INTEGER IDENTITY(1,1)	NOT NULL,
+    [TournamentObject_id]	NVARCHAR(40)			NOT NULL,
+    [CompanyID]				INTEGER					NOT NULL,
+    [TeamID]				INTEGER					NOT NULL,
+    [TournamentAuthor]		INTEGER					NOT NULL,
+    [TournamentName]		NVARCHAR(100)			NOT NULL,
+    [SharedSecret]			NVARCHAR(60)			NULL,
+    [TournamentDescription] NVARCHAR(60)			NULL,
+    [DisplayPic]			NVARCHAR(120)			NULL,
+    [TournamentRules]		NVARCHAR(120)			NULL,
+    [PublishedStatus]		BIT						NOT NULL,
+    [StartDate]				DATETIME2				NOT NULL,
+    [FinishDate]			DATETIME2				NULL,
+    [TimeZone]				NVARCHAR(100)			NOT NULL,
+    [NumberOfChallenges]	INTEGER					NOT NULL,
+    [MaxPlayers]			INTEGER					NULL,
+    [SuggestInduction]		BIT						NOT NULL,
+    [ScoringPreset]			NVARCHAR(20)			NOT NULL,
+    [NumberofPlayers]		INTEGER					NOT NULL,
+    [Version]				INTEGER					NOT NULL,
+	[MaximumPoints]			INTEGER					NOT NULL,
+    
+	CONSTRAINT PK_Tournament PRIMARY KEY CLUSTERED ([TournamentID]),
+	CONSTRAINT FK_Tournament_Company_CompanyID FOREIGN KEY (CompanyID) REFERENCES [dbo].[Company] (CompanyID),
+	CONSTRAINT FK_Tournament_Team_TeamID FOREIGN KEY (TeamID) REFERENCES [dbo].[Team] (TeamID)
+);

@@ -1,0 +1,11 @@
+﻿CREATE TABLE [dbo].[UserRole]
+(
+	[UserRoleID]	INTEGER IDENTITY(1,1)	NOT NULL,
+	[UserAuthID]	INTEGER					NOT NULL,
+	[UserID]		INTEGER					NOT NULL,
+	[UserRoleDesc]	NVARCHAR(60)			NOT NULL,
+
+	CONSTRAINT PK_UserRole PRIMARY KEY CLUSTERED ([UserRoleID]),
+	CONSTRAINT FK_UserRole_SCWUser_UserID FOREIGN KEY (UserID) REFERENCES [dbo].[SCWUser] (UserID),
+	CONSTRAINT FK_UserRole_UserAuth_UserID FOREIGN KEY (UserAuthID) REFERENCES [dbo].[UserAuth] (UserAuthID)
+)

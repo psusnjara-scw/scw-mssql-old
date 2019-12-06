@@ -1,0 +1,31 @@
+﻿CREATE TABLE [dbo].[Assessment] (
+    [AssessmentID]				INTEGER IDENTITY(1,1)	NOT NULL,
+    [AssessmentObject_id]		NVARCHAR(40)			NOT NULL,
+	[RealmID]					INTEGER					NOT NULL,
+	[UserID]					INTEGER					NOT NULL,
+	[AssessmentStatus]			NVARCHAR(40)			NOT NULL,
+	[SuccessRatio]				INTEGER					NOT NULL,
+	[AssessmentOwner]			NVARCHAR(40)			NOT NULL,
+	[Author]					NVARCHAR(60)			NULL,
+	[AssessmentName]			NVARCHAR(120)			NOT NULL,
+	[Description]				NVARCHAR(200)			NOT NULL,
+	[TimeLimit]					INTEGER					NULL,
+	[CreateCertificate]			BIT						NOT NULL,
+	[CertificateTemplate]		NVARCHAR(150)			NULL,
+	[Difficulty]				NVARCHAR(20)			NOT NULL,
+	[StartDate]					DATETIME2				NULL,
+    [InviteSendDate]			DATETIME2				NULL,
+    [EndDate]					DATETIME2				NULL,
+	[TimeZone]					NVARCHAR(40)			NULL,
+	[Version]					INTEGER					NOT NULL,
+	[SelfAssess]				BIT						NOT NULL,
+	[RetriesAllowed]			BIT						NOT NULL,
+	[FixedChallenges]			BIT						NOT NULL,
+    [InductionSuggested]		BIT						NOT NULL,
+    [NumberOfChallenges]		INTEGER					NOT NULL,
+           
+	CONSTRAINT PK_Assessment PRIMARY KEY CLUSTERED ([AssessmentID]),
+	CONSTRAINT FK_Assessment_Realm_RealmID FOREIGN KEY (RealmID) REFERENCES [dbo].[Realm] (RealmID),
+	CONSTRAINT FK_Assessment_User_UserID FOREIGN KEY (UserID) REFERENCES [dbo].[SCWUser] (UserID)
+
+);

@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[Region] (
+	[RegionID]			INTEGER IDENTITY (1,1)	NOT NULL,
+	[RegionName]		NVARCHAR(40)			NOT NULL,
+	[RegionDropdown]	NVARCHAR(40)			NOT NULL,
+
+	CONSTRAINT PK_Region PRIMARY KEY CLUSTERED ([RegionID])
+);
